@@ -140,17 +140,25 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 	Hub.TextSize = 17.000
 	Hub.TextXAlignment = Enum.TextXAlignment.Left
 
-	local BindButton = Instance.new("TextButton")
-	BindButton.Name = "BindButton"
-	BindButton.Parent = Top
-	BindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	BindButton.BackgroundTransparency = 1.000
-	BindButton.Position = UDim2.new(0.847561002, 0, 0, 0)
-	BindButton.Size = UDim2.new(0, 100, 0, 27)
-	BindButton.Font = Enum.Font.GothamSemibold
-        BindButton.Text = "["..tostring(getgenv().ToggleUI).."]"
-        BindButton.TextColor3 = Color3.fromRGB(245,245,245)
-	BindButton.TextSize = 13.000
+    local BindButton = Instance.new("TextButton")
+    BindButton.Name = "BindButton"
+    BindButton.Parent = Top
+    BindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BindButton.BackgroundTransparency = 1.000
+    BindButton.Position = UDim2.new(0.847561002, 0, 0, 0)
+    BindButton.Size = UDim2.new(0, 100, 0, 27)
+    BindButton.Font = Enum.Font.GothamSemibold
+    BindButton.TextColor3 = Color3.fromRGB(245, 245, 245)
+    BindButton.TextSize = 13.000
+
+    local function ShowTime()
+        while true do
+            BindButton.Text = "["..os.date("%H:%M").."]"
+            task.wait(0.35);
+        end
+    end
+
+    task.spawn(ShowTime);
 
 	local Tab = Instance.new("Frame")
 	Tab.Name = "Tab"

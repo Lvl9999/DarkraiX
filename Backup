@@ -159,19 +159,21 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
     TimeButton.TextColor3 = Color3.fromRGB(245, 245, 245)
     TimeButton.TextSize = 15.000
 
-    local startTime = tick()
-
     local function ShowTime()
-        while true do
-            local minutes = math.floor(tick() - startTime / 60);
-            local seconds = math.floor(tick() - startTime % 60);
+        local startTime = tick()
     
-            TimeButton.Text = string.format("[%d:%02d]",minutes,seconds);
+        while true do
+            local elapsedTime = tick() - startTime
+            local minutes = math.floor(elapsedTime / 60);
+            local seconds = math.floor(elapsedTime % 60);
+            
+            TimeButton.Text = string.format("[%02d:%02d]",minutes,seconds);
+            
             task.wait(1);
         end
     end
     
-    task.spawn(ShowTime)
+    task.spawn(ShowTime);
 
 	local Tab = Instance.new("Frame")
 	Tab.Name = "Tab"

@@ -341,7 +341,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 			
 			TextBtn.Name = "TextBtn"
 			TextBtn.Parent = Button
-			TextBtn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+			TextBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			TextBtn.Position = UDim2.new(0, 1, 0, 1)
 			TextBtn.Size = UDim2.new(0, 468, 0, 29)
 			TextBtn.AutoButtonColor = false
@@ -411,7 +411,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
         
             Button.Name = "Button"
             Button.Parent = Toggle
-            Button.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            Button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
             Button.Position = UDim2.new(0, 1, 0, 1)
             Button.Size = UDim2.new(0, 468, 0, 29)
             Button.AutoButtonColor = false
@@ -500,7 +500,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             
             Dropdown.Name = "Dropdown"
             Dropdown.Parent = MainFramePage
-            Dropdown.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            Dropdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
             Dropdown.ClipsDescendants = true
             Dropdown.Size = UDim2.new(0, 470, 0, 31)
             
@@ -721,7 +721,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
 			sliderr.Name = "sliderr"
 			sliderr.Parent = Slider
-			sliderr.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+			sliderr.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			sliderr.Position = UDim2.new(0, 1, 0, 1)
 			sliderr.Size = UDim2.new(0, 468, 0, 49)
 
@@ -890,7 +890,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
 			Textboxx.Name = "Textboxx"
 			Textboxx.Parent = Textbox
-			Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+			Textboxx.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 			Textboxx.Position = UDim2.new(0, 1, 0, 1)
 			Textboxx.Size = UDim2.new(0, 468, 0, 29)
 
@@ -998,7 +998,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 			Sep2.Font = Enum.Font.GothamSemibold
 			Sep2.Text = text
 			Sep2.TextColor3 = Color3.fromRGB(255, 255, 255)
-			Sep2.TextSize = 14.000
+			Sep2.TextSize = 20.000
 			
 			Sep3.Name = "Sep3"
 			Sep3.Parent = Seperator

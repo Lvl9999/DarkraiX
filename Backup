@@ -141,7 +141,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
     local function ShowDate()
         while true do
-            Hub.Text = "                                                "..os.date("%B %d, %Y");
+            Hub.Text = "                                                                                   "..os.date("%B %d, %Y");
             task.wait(0.35);
         end
     end
@@ -163,15 +163,15 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
     local function ShowTime()
         while true do
-            local minutes = math.floor(math.floor(tick() - startTime) / 60);
-            local seconds = math.floor(tick() - startTime) % 60;
-            
-            TimeButton.Text = "["..string.format("%d",minutes)..":"..string.format("%02d",seconds).."]";
+            local minutes = math.floor(tick() - startTime / 60);
+            local seconds = math.floor(tick() - startTime % 60);
+    
+            TimeButton.Text = string.format("[%d:%02d]",minutes,seconds);
             task.wait(1);
         end
     end
-
-    task.spawn(ShowTime);
+    
+    task.spawn(ShowTime)
 
 	local Tab = Instance.new("Frame")
 	Tab.Name = "Tab"

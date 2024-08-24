@@ -149,7 +149,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
     BindButton.Size = UDim2.new(0, 100, 0, 27)
     BindButton.Font = Enum.Font.GothamSemibold
     BindButton.TextColor3 = Color3.fromRGB(245, 245, 245)
-    BindButton.TextSize = 13.000
+    BindButton.TextSize = 15.000
 
     local function ShowTime()
         while true do

@@ -127,33 +127,41 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 	Name.TextColor3 = Color3.fromRGB(245,245,245)
 	Name.TextSize = 17.000
 
-	local Hub = Instance.new("TextLabel")
-	Hub.Name = "Hub"
-	Hub.Parent = Top
-	Hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Hub.BackgroundTransparency = 1.000
-	Hub.Position = UDim2.new(0, 110, 0, 0)
-	Hub.Size = UDim2.new(0, 81, 0, 27)
-	Hub.Font = Enum.Font.GothamSemibold
-	Hub.Text = "             | "..gamename
-	Hub.TextColor3 = Color3.fromRGB(245,245,245)
-	Hub.TextSize = 17.000
-	Hub.TextXAlignment = Enum.TextXAlignment.Left
+    local Hub = Instance.new("TextLabel")
+    Hub.Name = "Hub"
+    Hub.Parent = Top
+    Hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Hub.BackgroundTransparency = 1.000
+    Hub.Position = UDim2.new(0, 110, 0, 0)
+    Hub.Size = UDim2.new(0, 81, 0, 27)
+    Hub.Font = Enum.Font.GothamSemibold
+    Hub.TextColor3 = Color3.fromRGB(245, 245, 245)
+    Hub.TextSize = 17.000
+    Hub.TextXAlignment = Enum.TextXAlignment.Left
 
-    local BindButton = Instance.new("TextButton")
-    BindButton.Name = "BindButton"
-    BindButton.Parent = Top
-    BindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    BindButton.BackgroundTransparency = 1.000
-    BindButton.Position = UDim2.new(0.847561002, 0, 0, 0)
-    BindButton.Size = UDim2.new(0, 100, 0, 27)
-    BindButton.Font = Enum.Font.GothamSemibold
-    BindButton.TextColor3 = Color3.fromRGB(245, 245, 245)
-    BindButton.TextSize = 15.000
+    local function ShowDate()
+        while true do
+            Hub.Text = os.date("%B %d, %Y");
+            task.wait(0.35);
+        end
+    end
+
+    task.spawn(ShowDate);
+
+    local TimeButton = Instance.new("TextButton")
+    TimeButton.Name = "TimeButton"
+    TimeButton.Parent = Top
+    TimeButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TimeButton.BackgroundTransparency = 1.000
+    TimeButton.Position = UDim2.new(0.847561002, 0, 0, 0)
+    TimeButton.Size = UDim2.new(0, 100, 0, 27)
+    TimeButton.Font = Enum.Font.GothamSemibold
+    TimeButton.TextColor3 = Color3.fromRGB(245, 245, 245)
+    TimeButton.TextSize = 15.000
 
     local function ShowTime()
         while true do
-            BindButton.Text = "["..os.date("%H:%M").."]"
+            TimeButton.Text = "["..os.date("%H:%M").."]"
             task.wait(0.35);
         end
     end
@@ -228,7 +236,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 	UIPageLayout.GamepadInputEnabled = false
 	UIPageLayout.ScrollWheelInputEnabled = false
 	UIPageLayout.TouchInputEnabled = false
-	
+
 	MakeDraggable(Top,Main)
 
 	UserInputService.InputBegan:Connect(function(input,processed)

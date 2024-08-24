@@ -141,7 +141,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
     local function ShowDate()
         while true do
-            Hub.Text = "                                                                                   "..os.date("%B %d, %Y");
+            Hub.Text = "                                  "..os.date("%B %d, %Y");
             task.wait(0.35);
         end
     end

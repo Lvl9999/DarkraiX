@@ -518,9 +518,10 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             end
         end
         
-        function main:Dropdown(text, option, multi, callback)
+        function main:Dropdown(text, options, multi, callback)
             local isdropping = false
             local selectedItems = {}
+        
             local Dropdown = Instance.new("Frame")
             local UICorner = Instance.new("UICorner")
             local DropTitle = Instance.new("TextLabel")
@@ -529,16 +530,16 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             local UIPadding = Instance.new("UIPadding")
             local DropButton = Instance.new("TextButton")
             local DropImage = Instance.new("ImageLabel")
-        
+            
             Dropdown.Name = "Dropdown"
             Dropdown.Parent = MainFramePage
-            Dropdown.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            Dropdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
             Dropdown.ClipsDescendants = true
             Dropdown.Size = UDim2.new(0, 470, 0, 31)
-        
+            
             UICorner.CornerRadius = UDim.new(0, 5)
             UICorner.Parent = Dropdown
-        
+            
             DropTitle.Name = "DropTitle"
             DropTitle.Parent = Dropdown
             DropTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -548,7 +549,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             DropTitle.Text = text.. " : "
             DropTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
             DropTitle.TextSize = 15.000
-        
+            
             DropScroll.Name = "DropScroll"
             DropScroll.Parent = DropTitle
             DropScroll.Active = true
@@ -559,15 +560,15 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             DropScroll.Size = UDim2.new(0, 470, 0, 100)
             DropScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
             DropScroll.ScrollBarThickness = 3
-        
+            
             UIListLayout.Parent = DropScroll
             UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
             UIListLayout.Padding = UDim.new(0, 5)
-        
+            
             UIPadding.Parent = DropScroll
             UIPadding.PaddingLeft = UDim.new(0, 5)
             UIPadding.PaddingTop = UDim.new(0, 5)
-        
+            
             DropImage.Name = "DropImage"
             DropImage.Parent = Dropdown
             DropImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -576,7 +577,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             DropImage.Rotation = 180.000
             DropImage.Size = UDim2.new(0, 20, 0, 20)
             DropImage.Image = "rbxassetid://6031090990"
-        
+            
             DropButton.Name = "DropButton"
             DropButton.Parent = Dropdown
             DropButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -587,7 +588,15 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             DropButton.TextColor3 = Color3.fromRGB(0, 0, 0)
             DropButton.TextSize = 14.000
         
-            for _, v in next, option do
+            local function updateDropTitle()
+                if multi then
+                    DropTitle.Text = text .. " : " .. table.concat(selectedItems, ", ")
+                else
+                    DropTitle.Text = text .. " : " .. (selectedItems[1] or "")
+                end
+            end
+        
+            for i, v in next, options do
                 local Item = Instance.new("TextButton")
         
                 Item.Name = "Item"
@@ -619,16 +628,21 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
         
                 Item.MouseButton1Click:Connect(function()
                     if multi then
-                        -- Multi-selection logic
-                        if not selectedItems[v] then
-                            selectedItems[v] = true
+                        local itemText = Item.Text
+                        local itemIndex = table.find(selectedItems, itemText)
+                        if itemIndex then
+                            table.remove(selectedItems, itemIndex)
+                            Item.TextColor3 = Color3.fromRGB(225, 225, 225)
                         else
-                            selectedItems[v] = nil
+                            table.insert(selectedItems, itemText)
+                            Item.TextColor3 = Color3.fromRGB(0, 255, 0)
                         end
-                        local selectedText = "Selected: " .. table.concat(table.keys(selectedItems), ", ")
-                        DropTitle.Text = text .. " : " .. selectedText
+                        callback(selectedItems)
                     else
-                        -- Single-selection logic
+                        local itemText = Item.Text
+                        selectedItems = {itemText}
+                        DropTitle.Text = text .. " : " .. itemText
+                        callback(itemText)
                         isdropping = false
                         Dropdown:TweenSize(UDim2.new(0, 470, 0, 31), "Out", "Quad", 0.3, true)
                         TweenService:Create(
@@ -636,9 +650,8 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
                             TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                             {Rotation = 180}
                         ):Play()
-                        callback(Item.Text)
-                        DropTitle.Text = text .. " : " .. Item.Text
                     end
+                    updateDropTitle()
                 end)
             end
         
@@ -696,16 +709,21 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
         
                 Item.MouseButton1Click:Connect(function()
                     if multi then
-                        -- Multi-selection logic
-                        if not selectedItems[t] then
-                            selectedItems[t] = true
+                        local itemText = Item.Text
+                        local itemIndex = table.find(selectedItems, itemText)
+                        if itemIndex then
+                            table.remove(selectedItems, itemIndex)
+                            Item.TextColor3 = Color3.fromRGB(225, 225, 225)
                         else
-                            selectedItems[t] = nil
+                            table.insert(selectedItems, itemText)
+                            Item.TextColor3 = Color3.fromRGB(0, 255, 0)
                         end
-                        local selectedText = "Selected: " .. table.concat(table.keys(selectedItems), ", ")
-                        DropTitle.Text = text .. " : " .. selectedText
+                        callback(selectedItems)
                     else
-                        -- Single-selection logic
+                        local itemText = Item.Text
+                        selectedItems = {itemText}
+                        DropTitle.Text = text .. " : " .. itemText
+                        callback(itemText)
                         isdropping = false
                         Dropdown:TweenSize(UDim2.new(0, 470, 0, 31), "Out", "Quad", 0.3, true)
                         TweenService:Create(
@@ -713,12 +731,11 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
                             TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                             {Rotation = 180}
                         ):Play()
-                        callback(Item.Text)
-                        DropTitle.Text = text .. " : " .. Item.Text
                     end
+                    updateDropTitle()
                 end)
-                DropScroll.CanvasSize = UDim2.new(0, 0, 0, UIListLayout.AbsoluteContentSize.Y + 10)
             end
+        
             return dropfunc
         end
         

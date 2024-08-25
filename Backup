@@ -1,6 +1,4 @@
 -- Made by Darkrai X (GamingScripter)
-local PlaceName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId);
-
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 do local GUI = game.CoreGui:FindFirstChild("Darkrai");if GUI then GUI:Destroy();end;if _G.Color == nil then
@@ -52,23 +50,19 @@ local DarkraiX = {}
 function DarkraiX:ToggleUi()
     if game.CoreGui:FindFirstChild("Darkrai").Enabled == true then
         game.CoreGui:FindFirstChild("Darkrai").Enabled = false;
-        else
+    else
         game.CoreGui:FindFirstChild("Darkrai").Enabled = true;
     end
 end
 
-function DarkraiX:Window(text,gamenme,logo,keybind)
+function DarkraiX:Window(text,logo,keybind)
     local hubname = text
-    local gamename = gamenme
 	local uihide = false
 	local abc = false
 	local logo = logo or 0
 	local currentpage = ""
 	local keybind = keybind or Enum.KeyCode.J
 	local yoo = string.gsub(tostring(keybind),"Enum.KeyCode.","")
-	if gamename == "" then 
-	    gamename = ""..PlaceName.Name
-    end
 
 	local Darkrai = Instance.new("ScreenGui") -- guess i am using hubname wrong
 	Darkrai.Name = "Darkrai" -- wait
@@ -151,7 +145,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             local Holiday = Holidays[MnthDay] or "📆";
             local CurrentDate = os.date("%b %d, %Y");
             local Ping = string.format("%.2f ms", game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue());
-            Hub.Text = "               [Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
+            Hub.Text = "              [Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
             task.wait(0.35);
         end
     end
@@ -270,7 +264,8 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 	
 	local uitab = {}
 	
-	function uitab:Tab(text)
+	function uitab:Tab(logo, text)
+        local logo = logo or 0
 		local TabButton = Instance.new("TextButton")
 		TabButton.Parent = ScrollTab
 		TabButton.Name = text.."Server"
@@ -283,6 +278,18 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 		TabButton.TextColor3 = Color3.fromRGB(225, 225, 225)
 		TabButton.TextSize = 15.000
 		TabButton.TextTransparency = 0.500
+
+        if logo then
+            local Logo = Instance.new("ImageLabel")
+            Logo.Name = "TabLogo"
+            Logo.Parent = TabButton
+            Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Logo.BackgroundTransparency = 1.000
+            Logo.Position = UDim2.new(0, 5, 0, 5)
+            Logo.Size = UDim2.new(0, 16, 0, 16)
+            Logo.Image = logo
+            Logo.ScaleType = Enum.ScaleType.Fit
+        end
 
 		local MainFramePage = Instance.new("ScrollingFrame")
 		MainFramePage.Name = text.."_Page"
@@ -354,7 +361,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 				ScrollTab.CanvasSize = UDim2.new(0,0,0,PLL.AbsoluteContentSize.Y + 20)
 			end)
 		end)
-		
+
 		local main = {}
 		function main:Button(text,callback)
 			local Button = Instance.new("Frame")

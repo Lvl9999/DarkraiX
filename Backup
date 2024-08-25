@@ -143,12 +143,12 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
         while true do
             local MnthDay = os.date("%m %d");
             local Holidays = {
-                ["01 01"] = "Happy New Year 🎆",
-                ["12 25"] = "Merry Christmas 🎅",
-                ["10 31"] = "Happy Halloween 🎃",
+                ["01 01"] = "🎆",
+                ["12 25"] = "🎅",
+                ["10 31"] = "🎃",
             }
 
-            local Holiday = Holidays[MnthDay] or "";
+            local Holiday = Holidays[MnthDay] or "📅";
             local CurrentDate = os.date("%b %d, %Y");
             local Ping = string.format("%.2f ms", game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue());
             Hub.Text = "               [Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;

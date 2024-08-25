@@ -1074,7 +1074,7 @@ function DarkraiX:Window(text,logo,keybind)
 			Line.Size = UDim2.new(0, 470, 0, 1)
 		end
 
-        function main:Notify(Logo,Slogan,Msg,Vert,Horz,Duration)
+        getgenv().Notify = function(Logo,Slogan,Msg,Vert,Horz,Duration)
             local DarkraiNotif = Instance.new("ScreenGui");
             DarkraiNotif.Name = "DarkraiNotif";
         

@@ -149,12 +149,11 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 			}
 
 			local Holiday = Holidays[MnthDay] or "";
-			local CurrentDate = os.date("%B %d, %Y");
-			local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString();
-			local Fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait());
+			local CurrentDate = os.date("%b %e, %Y");
+            local Ping = string.format("%.2f ms",game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue());
 
-			Hub.Text = "[Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | FPS: "..Fps.." | "..CurrentDate;
-			task.wait(0.35);
+            Hub.Text = "          [Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
+            task.wait(0.35);
         end
     end
 

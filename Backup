@@ -141,8 +141,22 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
     local function ShowDate()
         while true do
-            Hub.Text = "                                  "..os.date("%B %d, %Y");
-            task.wait(0.35);
+			local Greetings = "Welcome,"..game.Players.LocalPlayer.Name.."!";
+
+			local MnthDay = os.date("%m %d");
+			local Holidays = {
+				["01 01"] = "Happy New Year 🎆",
+				["12 25"] = "Merry Christmas 🎅",
+				["10 31"] = "Happy Halloween 🎃",
+			}
+
+			local Holiday = Holidays[MnthDay] or "";
+			local CurrentDate = os.date("%B %d, %Y");
+			local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString();
+			local Fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait());
+
+			Hub.Text = Greetings.." ═════ [Current Version: 1.01] ═════ | "..Holiday.." | Ping: "..Ping.." | FPS: "..Fps.." | "..CurrentDate;
+			task.wait(0.35);
         end
     end
 
@@ -161,18 +175,18 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 
     local function ShowTime()
         local startTime = tick()
-    
+
         while true do
             local elapsedTime = tick() - startTime
             local minutes = math.floor(elapsedTime / 60);
             local seconds = math.floor(elapsedTime % 60);
-            
+
             TimeButton.Text = string.format("[%02d:%02d]",minutes,seconds);
-            
+
             task.wait(1);
         end
     end
-    
+
     task.spawn(ShowTime);
 
 	local Tab = Instance.new("Frame")

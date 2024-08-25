@@ -265,34 +265,29 @@ function DarkraiX:Window(text,logo,keybind)
 	local uitab = {}
 	
 	function uitab:Tab(logo, text)
-        local logo = logo or ""
-        local TabButton = Instance.new("TextButton")
-        TabButton.Parent = ScrollTab
-        TabButton.Name = text.."Server"
-        TabButton.Text = text
-        TabButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-        TabButton.BorderColor3 = Color3.fromRGB(245, 245, 245)
-        TabButton.BorderSizePixel = 3
-        TabButton.Size = UDim2.new(0, 150, 0, 30)
-        TabButton.Font = Enum.Font.GothamSemibold
-        TabButton.TextColor3 = Color3.fromRGB(225, 225, 225)
-        TabButton.TextSize = 15.000
-        TabButton.TextTransparency = 0.500
-    
-        if logo and logo ~= "" then
+        local logo = logo or 0
+		local TabButton = Instance.new("TextButton")
+		TabButton.Parent = ScrollTab
+		TabButton.Name = text.."Server"
+		TabButton.Text = text
+		TabButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	    TabButton.BorderColor3 = Color3.fromRGB(245,245,245)
+        TabButton.BorderSizePixel = 2
+		TabButton.Size = UDim2.new(0, 130, 0, 23)
+		TabButton.Font = Enum.Font.GothamSemibold
+		TabButton.TextColor3 = Color3.fromRGB(225, 225, 225)
+		TabButton.TextSize = 15.000
+		TabButton.TextTransparency = 0.500
+
+        if logo then
             local Logo = Instance.new("ImageLabel")
-            local UICorner = Instance.new("UICorner")
-    
             Logo.Name = "TabLogo"
             Logo.Parent = TabButton
             Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Logo.BackgroundTransparency = 1.000
-            Logo.Position = UDim2.new(0, 10, 0, 5)
-            Logo.Size = UDim2.new(0, 40, 0, 40)
+            Logo.Position = UDim2.new(0, 5, 0, 5)
+            Logo.Size = UDim2.new(0, 25, 0, 25)
             Logo.Image = logo
-            
-            UICorner.CornerRadius = UDim.new(0, 8)
-            UICorner.Parent = Logo
         end
 
 		local MainFramePage = Instance.new("ScrollingFrame")

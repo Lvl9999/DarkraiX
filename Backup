@@ -153,7 +153,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
 			local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString();
 			local Fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait());
 
-			Hub.Text = " ═════ [Current Version: 1.01] ═════ | "..Holiday.." | Ping: "..Ping.." | FPS: "..Fps.." | "..CurrentDate;
+			Hub.Text = "[Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | FPS: "..Fps.." | "..CurrentDate;
 			task.wait(0.35);
         end
     end

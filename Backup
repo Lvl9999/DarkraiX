@@ -149,7 +149,7 @@ function DarkraiX:Window(text,gamenme,logo,keybind)
             }
 
             local Holiday = Holidays[MnthDay] or "";
-            local CurrentDate = os.date("%b %e, %Y");
+            local CurrentDate = os.date("%b %d, %Y");
             local Ping = string.format("%.2f ms", game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue());
             Hub.Text = "          [Current Version: 1.01] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
             task.wait(0.35);

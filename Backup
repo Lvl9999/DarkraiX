@@ -145,14 +145,12 @@ function DarkraiX:ToggleUi()
     end
 end
 
-function DarkraiX:Window(text,logo,keybind)
+function DarkraiX:Window(text,logo)
     local hubname = text
 	local uihide = false
 	local abc = false
 	local logo = logo or 0
 	local currentpage = ""
-	local keybind = keybind or Enum.KeyCode.J
-	local yoo = string.gsub(tostring(keybind),"Enum.KeyCode.","")
 
 	local Darkrai = Instance.new("ScreenGui") -- guess i am using hubname wrong
 	Darkrai.Name = "Darkrai" -- wait
@@ -341,7 +339,7 @@ function DarkraiX:Window(text,logo,keybind)
 	MakeDraggable(Top,Main)
 
 	UserInputService.InputBegan:Connect(function(input,processed)
-		if not processed and input.KeyCode == Enum.KeyCode[yoo] then
+		if not processed and input.KeyCode == Enum.KeyCode[getgenv().ToggleUI] then
 			if uihide == false then
 				uihide = true
 				Main:TweenSize(UDim2.new(0, 0, 0, 0),"In","Quad",0.4,true)

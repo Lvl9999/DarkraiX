@@ -1186,5 +1186,10 @@ task.spawn(function()
         local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Error
         Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
         getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification"," CurrentVersion Variable Missing, Join Discord Server for support.","bottom","",9e9);
+    else
+        local Welcome = {"http://www.roblox.com/asset/?id=5111649317","http://www.roblox.com/asset/?id=4903897880","http://www.roblox.com/asset/?id=1207959412","http://www.roblox.com/asset/?id=6520346428","http://www.roblox.com/asset/?id=6670645219","http://www.roblox.com/asset/?id=5344619446","http://www.roblox.com/asset/?id=5937585206","http://www.roblox.com/asset/?id=5842011186","http://www.roblox.com/asset/?id=5842208959","http://www.roblox.com/asset/?id=4903895449"};
+        local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Welcome[math.random(1,#Welcome)];
+        Sound.Volume = 5;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+        getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification","Welcome To Flame's Hub, Current Version: "..getgenv().CurrentVersion,"bottom","",4);
     end
 end)

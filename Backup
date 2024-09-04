@@ -1169,3 +1169,22 @@ if getgenv().ToggleUI and getgenv().CurrentVersion then
     end
     return DarkraiX
 end
+
+task.spawn(function()
+    if not getgenv().ToggleUI and not getgenv().CurrentVersion then
+        local Error = "http://www.roblox.com/asset/?id=6879511753"
+        local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Error
+        Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+        getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification"," ToggleUI and Current Version Variable Missing, Join Discord Server for support.","bottom","",9e9);
+    elseif not getgenv().ToggleUI then
+        local Error = "http://www.roblox.com/asset/?id=6879511753"
+        local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Error
+        Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+        getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification"," ToggleUI Variable Missing, Join Discord Server for support.","bottom","",9e9);
+    elseif not getgenv().CurrentVersion then
+        local Error = "http://www.roblox.com/asset/?id=6879511753"
+        local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Error
+        Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
+        getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification"," CurrentVersion Variable Missing, Join Discord Server for support.","bottom","",9e9);
+    end
+end)

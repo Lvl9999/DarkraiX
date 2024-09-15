@@ -259,7 +259,7 @@ if getgenv().ToggleUI and getgenv().CurrentVersion then
                 local Holiday = Holidays[MnthDay] or "📆";
                 local CurrentDate = os.date("%b %d, %Y");
                 local Ping = string.format("%.2f ms", game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue());
-                Hub.Text = "              [Current Version: "..getgenv().CurrentVersion.."] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
+                Hub.Text = "              [Version: "..getgenv().CurrentVersion.."] | "..Holiday.." | Ping: "..Ping.." | "..CurrentDate;
                 task.wait(0.35);
             end
         end

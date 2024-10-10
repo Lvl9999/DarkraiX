@@ -1031,7 +1031,7 @@ if getgenv().ToggleUI and getgenv().CurrentVersion then
                 end)
             end
     
-            function main:Textbox(text, disappear, callback)
+            function main:Textbox(text,defaultText,disappear,callback)
                 local Textbox = Instance.new("Frame")
                 local TextboxCorner = Instance.new("UICorner")
                 local Textboxx = Instance.new("Frame")
@@ -1094,14 +1094,16 @@ if getgenv().ToggleUI and getgenv().CurrentVersion then
                 RealTextbox.Position = UDim2.new(0, 360, 0, 4)
                 RealTextbox.Size = UDim2.new(0, 100, 0, 24)
                 RealTextbox.Font = Enum.Font.GothamSemibold
-                RealTextbox.Text = ""
+                RealTextbox.Text = defaultText
                 RealTextbox.TextColor3 = Color3.fromRGB(225, 225, 225)
                 RealTextbox.TextSize = 11.000
                 RealTextbox.TextTransparency = 0
                 RealTextbox.ZIndex = 2
             
-                RealTextbox.FocusLost:Connect(function()
-                    callback(RealTextbox.Text)
+                RealTextbox.FocusLost:Connect(function(enterPressed)
+                    if callback and typeof(callback) == "function" then
+                        callback(RealTextbox.Text)
+                    end
                     if disappear then
                         RealTextbox.Text = ""
                     end
